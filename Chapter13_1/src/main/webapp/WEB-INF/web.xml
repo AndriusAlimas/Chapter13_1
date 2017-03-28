@@ -5,6 +5,47 @@
         <welcome-file>index.jsp</welcome-file>
         </welcome-file-list>
         
+     	<!-- We defined servlet and servlet mapping -->
+     	<servlet>
+     		<servlet-name>MyServlet</servlet-name>
+     		<servlet-class>com.andrius.project.Chapter13_1.servlet.MyServlet</servlet-class>
+     	</servlet>
+     	
+     	<servlet-mapping>
+     		<servlet-name>MyServlet</servlet-name>
+     		<url-pattern>/omg.do</url-pattern>
+     	</servlet-mapping>
+     	
+        <!-- we define security role that match container security role -->
+        <security-role>
+        	<role-name>Admin</role-name>
+        </security-role>
+        
+        <!-- we enabled authentication using FORM -->
+        <login-config>
+        	<auth-method>FORM</auth-method>
+        	<!-- now we need provide form authentication configuration -->
+        	<form-login-config>
+        		<form-login-page>/loginPage.jsp</form-login-page>
+        		<form-error-page>/loginError.jsp</form-error-page>
+        	</form-login-config>
+        </login-config>
+        
+        
+        <security-constraint>
+        	<web-resource-collection>
+        		<web-resource-name>Filter</web-resource-name>
+        		<url-pattern>/index.jsp</url-pattern>
+        		<http-method>GET</http-method>
+        		<http-method>POST</http-method>
+        	</web-resource-collection>
+        	
+        <auth-constraint>
+        	<role-name>Admin</role-name>
+        </auth-constraint>
+      
+    </security-constraint>
+        
         <jsp-config>
         	<jsp-property-group>
         		<url-pattern>*.jsp</url-pattern>
