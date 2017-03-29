@@ -8,6 +8,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>You allowed to press this button to go on filter servlet:</h1><hr>
+        <form method="POST" action="omg.do">
+        	<input type="submit" value="GO!">
+        </form>
     </body>
 </html>

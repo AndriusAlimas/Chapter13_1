@@ -16,6 +16,27 @@
      		<url-pattern>/omg.do</url-pattern>
      	</servlet-mapping>
      	
+     	<!-- in very similar way we define a filters: -->
+     	<filter>
+     		<filter-name>SuperFilter</filter-name>
+     		<filter-class>com.andrius.project.Chapter13_1.filter.RequestFilter</filter-class>
+     		<!-- Filters can have init-param same like servlet: -->
+     		<init-param>
+     			<param-name>email</param-name>
+     			<param-value>andriusjavait@gmail.com</param-value>
+     		</init-param>
+     	</filter>
+     	
+     	<filter-mapping>
+     		<filter-name>SuperFilter</filter-name>
+     		<!-- filters can be mapped in two ways using same like servlet url-pattern element
+     		or using servlet-name which is the last thing that container look: -->
+     		<servlet-name>MyServlet</servlet-name>
+     		<!-- dispatcher has 4 values you could choose REQUEST, INCLUDE, FORWARD, ERROR -->
+     		<!-- default is REQUEST if you not type: -->
+     		<dispatcher>REQUEST</dispatcher>
+     		
+     	</filter-mapping>
         <!-- we define security role that match container security role -->
         <security-role>
         	<role-name>Admin</role-name>
